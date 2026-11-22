@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 524h0052/schoolapp:latest
+    container_name: schoolapp_web
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=SchoolDB;User Id=sa;Password=StrongPassword123!;TrustServerCertificate=True;
+    depends_on:
+      - sqlserver
+    restart: always
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: schoolapp_db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=StrongPassword123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql/data
+    restart: always
+
+volumes:
+  mssql_data:

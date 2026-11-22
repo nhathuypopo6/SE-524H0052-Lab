@@ -1,0 +1,7 @@
+## Visual Studio standard gitignore
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+packages/

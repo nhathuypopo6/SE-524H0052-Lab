@@ -1,0 +1,14 @@
+@{
+    ViewBag.Title = "Student Transcript Report";
+}
+<h2>📊 Student Academic Transcript Report</h2>
+<div class="alert alert-info">@ViewBag.Message</div>
+<div class="card p-3 shadow-sm">
+    <h4>Report Viewer Preview</h4>
+    <table class="table table-sm">
+        <tr><th>Student:</th><td>524H0052 - Nguyen Nhat Huy</td></tr>
+        <tr><th>Program:</th><td>Software Engineering (K26)</td></tr>
+        <tr><th>Cumulative GPA:</th><td>3.85 / 4.0</td></tr>
+    </table>
+    <button class="btn btn-success" onclick="alert('Exporting RDLC report to PDF...')">📥 Export PDF Report</button>
+</div>

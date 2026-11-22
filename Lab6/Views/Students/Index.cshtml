@@ -1,0 +1,32 @@
+@model IEnumerable<Lab06_ASPNET_MVC.Models.Student>
+@{
+    ViewBag.Title = "Student List";
+}
+<h2>🎓 Students Directory</h2>
+<p><a href="/Students/Create" class="btn btn-primary">➕ Create New Student</a></p>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Student ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Enrollment Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>@item.StudentID</td>
+            <td>@item.LastName</td>
+            <td>@item.FirstMidName</td>
+            <td>@item.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+            <td>
+                <a href="/Students/Edit/@item.StudentID" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="/Students/Details/@item.StudentID" class="btn btn-sm btn-outline-info">Details</a>
+                <a href="/Students/Delete/@item.StudentID" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
